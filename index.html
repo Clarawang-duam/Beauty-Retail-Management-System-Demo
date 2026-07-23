@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>beauty-retail-management-system</title>
+  </head>
+  <body>
+    <svg aria-hidden="true" width="0" height="0" style="position:absolute">
+      <defs>
+        <!-- 锐化约 +20：邻域系数 0.2 -->
+        <filter id="br-sharpen-20" color-interpolation-filters="sRGB">
+          <feConvolveMatrix
+            order="3"
+            kernelMatrix="0 -0.2 0 -0.2 1.8 -0.2 0 -0.2 0"
+            preserveAlpha="true"
+          />
+        </filter>
+      </defs>
+    </svg>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

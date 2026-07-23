@@ -1,0 +1,325 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --br-accent: #E85D75;
+  --br-cta: #E57200;
+  --br-cta-hover: #CF6600;
+  --br-text: #1F2329;
+  --br-text-secondary: #646A73;
+  --br-text-muted: #8F959E;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  color: var(--br-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* 首页：浅蓝色块氛围底（无遮罩） */
+.br-home {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+}
+
+.br-home::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #FFFFFF;
+  background-image: url('/home-hero.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  filter: url(#br-sharpen-20);
+  pointer-events: none;
+}
+
+.br-home-layer {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.br-home-topbar {
+  background: transparent;
+}
+
+/* 手工核销：海滩插画氛围底 */
+.br-checkout {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #E8F4FA;
+}
+
+.br-checkout::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/checkout-hero.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: url(#br-sharpen-20);
+  pointer-events: none;
+}
+
+.br-checkout-layer {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* IMG SEE PLANS 风胶囊按钮 */
+.br-cta-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.6rem;
+  border-radius: 9999px;
+  background: var(--br-cta);
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  border: none;
+  box-shadow: 0 2px 8px rgba(229, 114, 0, 0.35);
+  transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.br-cta-pill:hover {
+  background: var(--br-cta-hover);
+  box-shadow: 0 4px 12px rgba(229, 114, 0, 0.42);
+}
+
+.br-cta-pill:active {
+  transform: scale(0.98);
+}
+
+/* IMG 式磨砂卖点卡 */
+.br-stat-card {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 4px 16px rgba(31, 35, 41, 0.08),
+    0 1px 3px rgba(31, 35, 41, 0.04);
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+
+.br-stat-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 12px 28px rgba(31, 35, 41, 0.12),
+    0 4px 8px rgba(31, 35, 41, 0.06);
+}
+
+.br-stat-card:active {
+  transform: scale(0.98);
+}
+
+/* 插画整卡：IMG 式底部薄荷绿柔光（无描边、无实色环） */
+.br-stat-card.br-stat-card--illust {
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  background: #FFFFFF;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  border-radius: 1.25rem;
+  box-shadow:
+    0 8px 20px rgba(90, 210, 200, 0.55),
+    0 14px 28px rgba(90, 210, 200, 0.28);
+}
+
+.br-stat-card.br-stat-card--illust:hover {
+  background: #FFFFFF;
+  border: none;
+  box-shadow:
+    0 10px 24px rgba(90, 210, 200, 0.62),
+    0 16px 32px rgba(90, 210, 200, 0.34);
+  filter: brightness(1.02);
+  transform: translateY(-3px);
+}
+
+.br-stat-card.br-stat-card--illust:active {
+  filter: brightness(0.98);
+  transform: scale(0.98);
+}
+
+.br-stat-illust {
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  pointer-events: none;
+  margin: auto;
+}
+
+.br-stat-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(232, 93, 117, 0.1);
+  color: var(--br-accent);
+}
+
+.br-stat-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--br-text);
+  line-height: 1.2;
+}
+
+.br-stat-sub {
+  font-size: 0.875rem;
+  color: var(--br-text-muted);
+  line-height: 1.3;
+}
+
+/* 次入口文字链：字阶同打卡胶囊，蓝色无底 */
+.br-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: #2B8CFF;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: color 160ms ease, transform 160ms ease, opacity 160ms ease;
+}
+
+.br-text-link:hover {
+  color: #1A7AEB;
+  transform: translateX(2px);
+}
+
+.br-text-link:active {
+  opacity: 0.85;
+  transform: translateX(1px);
+}
+
+/* 次入口 / 生日条 */
+.br-glass-btn {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(31, 35, 41, 0.06);
+  color: var(--br-text);
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+
+.br-glass-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 6px 16px rgba(31, 35, 41, 0.1);
+}
+
+.br-glass-btn:active {
+  transform: scale(0.98);
+}
+
+.br-glass-panel {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(31, 35, 41, 0.06);
+}
+
+/* 首页左侧生日栏：绝对定位，不挤占居中主区 */
+.br-birthday-side {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 10.5rem;
+  max-width: calc(50vw - 14rem);
+  padding: 0.75rem 0.75rem;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(31, 35, 41, 0.06);
+}
+
+@media (max-width: 1100px) {
+  .br-birthday-side {
+    width: 9.5rem;
+    left: 0.75rem;
+  }
+}
+
+/* 强制横屏：手机/平板竖屏时旋转页面，PC 不受影响 */
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+  html {
+    transform: rotate(90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
