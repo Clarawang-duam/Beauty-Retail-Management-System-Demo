@@ -28,3 +28,4 @@ test_*.mjs
 *.njsproj
 *.sln
 *.sw?
+.vercel

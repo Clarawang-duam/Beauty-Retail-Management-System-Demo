@@ -4,13 +4,9 @@
 
 正式生产仓：[Beauty-Retail-Management-System](https://github.com/Clarawang-duam/Beauty-Retail-Management-System)
 
-## 快速启动
+## 在线演示
 
-```bash
-npm install
-npm run dev
-# → http://localhost:5174
-```
+https://beauty-retail-demo.vercel.app
 
 | 账号 | 密码 | 角色 |
 |------|------|------|
@@ -19,6 +15,16 @@ npm run dev
 | `staff2` | `123456` | 员工（小林） |
 
 演示预约号：`0001`（手工核销可搜）
+
+> 国内访问可能偏慢或不稳定；能翻墙时更稳妥。
+
+## 本地启动
+
+```bash
+npm install
+npm run dev
+# → http://localhost:5174
+```
 
 登录页 / 设置页可「重置演示数据」。
 
